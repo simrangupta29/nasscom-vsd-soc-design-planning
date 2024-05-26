@@ -71,3 +71,28 @@
 		</ul>
       </ul>
 </div>
+
+# <h2 id="header-2">Day 2 - Good floor planning considerations</h2>	 
+## <h2 id="header-2_1">Chip Floor planning consideration</h2>
+### <h2 id="header-2_1_1">Utilization factor and aspect ratio</h2>
+In  order to define width and height of core and die we take example of a simple netlist.Netlist is basically connectivities.The dimensions of the chip depends upon the dimensions of the logic gate.
+![Screenshot (601)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/663797e9-06d9-4153-9135-371a8b379ca6)
+
+we are interested in the dimensions of the standard cell so lets take a rough dimension.
+![Screenshot (603)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/642fa305-060e-4b99-b1d0-846487b2ba07)
+
+* **Die** which consists of core, is small semicondcutor material  specimen on which the fundamental circuit is fabricated.
+* **Core** is the section of the chip where the fundamental logic of the design is placed.
+ <b>UTILISATION FACTOR</b>
+  
+ ```
+Utilization Factor = Area occupied by netlist / Total area of the core
+```
+Now, Let's try to place that particular logic inside the core. The netlist will occupy the whole area inside the core it means it utilizes the core 100%.The leftover area can be used to placed some additional cells like buffers or something else.
+<b>ASPECT RATIO</b>
+```
+Aspect Ratio = Height /  width
+```
+If Aspect Ratio is 1 it signifies that chip is square shaped. If it is not 1 it means the chip is in rectangular shape.
+
+### <h2 id="header-2_1_2">Utilization factor and aspect ratio</h2>
