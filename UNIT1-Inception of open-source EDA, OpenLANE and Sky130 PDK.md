@@ -330,3 +330,56 @@ Now In openlane, we are going to run the synthesis, but before synthesis, we hav
 ![SOC7](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/77cab21f-c749-45d3-b8d2-8e6075d9ecc2)
 > The preparation is completed.In this lib.ref and lib.tech got merged.
 
+### <h1 id="header-1_3_3">Review files after design prep and run synthesis</h1>
+After completing the preparation, in the picorv32a file, the run directory is created. Inside the folder, Today's date is created. so in this directory some folders are available which is required for openlane.<br>
+![WhatsApp Image 2024-05-26 at 00 30 52_f74483d6](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/0ef8ea07-7be8-4034-8701-587adc093dc0)
+
+In the temp file, merged.lef file is available which was created in preparation time. if we open this merged.lef file, we get all the wire or layer level and cell level information.
+![soc8](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/c21eab0f-82c3-4f1d-84f8-dad537017229)
+The result directory is empty because  we have not run anything and in the report folder all the folders are there about synthesis, placement, floorplanning,cts,routing,magic,lvs which are still empty.
+![WhatsApp Image 2024-05-26 at 00 32 34_b7e8fe89](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/bd167790-fb7b-4b9c-98b3-6ef8cc8f483e)
+> Runs folder contains config.tcl which shows the parameters which are there in runs.When we make some changes in the original configuration and then we run, for example if we make a change in core utilization in the floorplanning and then we run the floorplanning, at this time in the config.tcl file, the core utility will change and by cross checking it ,we can check that the modification is reflected in the execution or not.
+
+![WhatsApp Image 2024-05-26 at 00 32 53_4b0fb7ed](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/a048e2f6-a504-4ed6-9e5a-0c30238f2dae)
+Now to do the Yosys synthesis:-
+```
+run_synthesis
+```
+![WhatsApp Image 2024-05-26 at 00 33 11_12df3949](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/858e28ff-517d-426a-9c24-0003bf9a3a4a)
+The above figure shows the successfull synthesis.
+
+### <h1 id="header-1_3_5">Steps to characterize synthesis results</h1>
+* Now since the sysnthesis is done so now synthesis folder will contain files.
+* The synthesis step, converts RTL code into a gate-level netlist.
+  ![WhatsApp Image 2024-05-26 at 00 33 31_174b9712](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/9c45893e-2340-4106-ad01-5b54806dcb9f)
+  
+> Above figure the shows the synthesis of chip and its area too.
+
+#### Calculation of the flop ratio.
+.
+```math
+Flop\ Ratio = \frac{Number\ of\ D\ Flip\ Flops}{Total\ Number\ of\ Cells}
+```
+```math
+Percentage\ of\ DFF's = Flop\ Ratio * 100
+```
+![WhatsApp Image 2024-05-26 at 00 33 47_258b9822](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/16aa1709-fad9-4f98-86a9-89ad4dde12a6)
+
+> Here we have 14876 total number of cells and 1613 D flip-flops.
+```math
+Flop\ Ratio = \frac{1613}{14876} = 0.108429685
+```
+```math
+Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
+```
+Lets now see the results which have now synthesised netlist which is picorv32a.synthesis.v.
+![WhatsApp Image 2024-05-26 at 00 34 15_b02f7b52](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/3c48102c-8f75-4179-9f6a-70be07f00ee2)
+
+We also have synthesis yosys report generated as yosys_4.stat.rpt
+![WhatsApp Image 2024-05-26 at 00 34 45_9050dc83](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/d29f3030-686e-456e-aa7e-2198d46baf06)
+![WhatsApp Image 2024-05-26 at 00 35 00_a136de19](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/fce5eb4a-edc8-45f4-812f-c59583998c20)
+
+Similliary we can also check STA report as prelayout report generated as 2-opensta_min_max.rpt
+![WhatsApp Image 2024-05-26 at 00 35 22_04dab527](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/7cb20d4a-0c12-4851-8287-a37646000318)
+![WhatsApp Image 2024-05-26 at 00 35 44_cb325eb8](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/85c2b019-ec0e-44e9-9332-01aae66d1537)
+
