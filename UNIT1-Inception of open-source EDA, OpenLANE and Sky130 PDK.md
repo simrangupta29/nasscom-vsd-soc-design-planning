@@ -144,3 +144,15 @@ The RTL code describes the hardware behavior.
 This netlist is used to fabricate the chip, ensuring the hardware performs the intended functions based on the binary instructions it receives.
 
 ![Screenshot (579)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/326ad533-edd7-4f37-8cf1-fb646cd1cc0b)
+
+
+## <h1 id="header-1_2">Soc design and OpenLANE</h1>
+### <h1 id="header-1_2_1">Introduction to all components of open-source digital asic design</h1>
+
+Designing an ASIC (Application-Specific Integrated Circuit) involves several critical steps and the use of various tools and components.They are as follows:-
+* **1.RTL (Register-Transfer Level) IPs:-** RTL is a level of abstraction used in describing the behavior of a digital circuit. RTL IPs (Intellectual Properties) are pre-designed, reusable blocks of RTL code that perform specific functions (e.g., memory controllers, communication interfaces, processors).
+Example: A picorv32 core, which is an RTL implementation of a RISC-V processor.
+
+* **2.EDA tools:-** EDA tools are software tools used to design and verify electronic systems such as ICs. They include various types of tools for different stages of the design process like Design Entry Tools,simulation tools,synthesis tools.
+* **3.PDK Data:-** PDK (Process Design Kit) is a set of files and documentation provided by a semiconductor foundry that describes the manufacturing process and contains the necessary data to design and fabricate chips using that process.
+ It includes design rules, device models, standard cell libraries, IO libraries, and technology files.
