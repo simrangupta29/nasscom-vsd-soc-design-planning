@@ -156,3 +156,62 @@ Example: A picorv32 core, which is an RTL implementation of a RISC-V processor.
 * **2.EDA tools:-** EDA tools are software tools used to design and verify electronic systems such as ICs. They include various types of tools for different stages of the design process like Design Entry Tools,simulation tools,synthesis tools.
 * **3.PDK Data:-** PDK (Process Design Kit) is a set of files and documentation provided by a semiconductor foundry that describes the manufacturing process and contains the necessary data to design and fabricate chips using that process.
  It includes design rules, device models, standard cell libraries, IO libraries, and technology files.
+<br>
+![Screenshot (585)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/681c7f48-734e-40dd-9dc7-664db53a65ad)
+
+<b>SkyWater 130nm PDK</b>
+Google has collaborated with SkyWater Technology, a semiconductor foundry, to provide open-source PDKs.The SkyWater 130nm PDK is a part of this initiative, offering designers access to a mature, reliable process technology that balances performance, power, and cost.Example: Intel Pentium 4 Extreme Edition (P4EE) @ 3.46GHz
+![Screenshot (586)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/70df4495-3fc2-44f3-a6c5-3c12a699e389)
+The main objective of the ASIC Design Flow is to take the design from the RTL (Register Transfer Level) all the way to the GDSII, which is the format used for the final fabrication layout.<br>
+The ASIC design flow is a complex and iterative process involving several stages, each critical to the successful creation of a functional integrated circuit (IC).
+![Screenshot (587)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/de1f82c8-0361-4bf1-87b3-23ffa9ea80ef)
+<b>1.SYNTHESIS</b>
+* **Objective:** Convert the RTL code into a gate-level netlist.
+* **Tools:** Use synthesis tools (e.g., Synopsys Design Compiler) to optimize the design for performance, area, and power.
+* **Output:** A gate-level netlist that describes the logic gates and their interconnections.
+
+![Screenshot (588)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/41535158-cac3-4e3a-b816-71eca7a968fe)
+![Screenshot (589)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/1f9e8f3f-3f0a-43ef-ab54-c128b2d33776)
+
+<b>2.Floor Planning</b>
+* **Objective:** Organize the layout of the chip, determining the placement of macros, I/O pads, and standard cells.
+Types:<br>
+* **Macro Floorplanning:** Define dimensions and positions of large blocks (macros), as well as the routing paths.
+* **Chip Floorplanning:** For full-chip implementation, considering power distribution, signal integrity, and clock distribution.
+
+![Screenshot (591)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/73c3e60c-d072-4d3b-8419-2d614011a870)
+<b>3.POWER PLANNING</b>
+* **Objective:** Design the power distribution network to supply adequate power to all parts of the chip.
+Steps:<br>
+* **Construct Power Network:** Design power grids and straps to minimize resistance and ensure uniform power distribution.
+* **Use Upper Metal Layers:** Thicker metal layers (e.g., M8) are used for power distribution to reduce resistance and improve reliability.
+
+  ![Screenshot (590)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/3585f003-8021-4407-8c2a-b3104b7f2557)
+<b>4.PLACEMENT</b>
+* **Objective:** Position the standard cells on the chip to minimize interconnect delay and optimize performance.
+Types:<br>
+* **Global Placement:** Find an optimal approximate position for cells without concern for legal placement. Ensures cells are close to minimize interconnect lengths.
+* **Detailed Placement:** Adjust the positions from global placement to ensure all cells are legally placed without overlaps.
+
+  ![Screenshot (592)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/299e9b01-30ef-4535-b73a-e73ea8494644)
+<b>5.Clock Tree Synthesis (CTS)</b>
+* **Objective:** Distribute the clock signal uniformly across the chip to minimize clock skew (differences in clock arrival times at different components).
+Steps:<br>
+* Design a clock tree structure that ensures balanced and synchronized clock distribution.
+* Minimize skew and optimize for power and timing.
+
+  ![Screenshot (594)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/7e8b6be9-29c0-48a5-a95b-ef90c8801ed9)
+<b>6.ROUTING</b>
+* **Objective:** Connect all the placed cells according to the netlist.
+Types:<br>
+* **Global Routing:** Plan the general routes for connections, focusing on optimal pathfinding without detailed geometric considerations.
+* **Detailed Routing:** Finalize the exact geometric paths for all connections, ensuring they adhere to design rules and manufacturing constraints.
+
+![Screenshot (595)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/15a27333-1383-44cc-ac0f-fc292c618ece)
+<b>7.SIGN OFF</b>
+* **Objective:** Ensure the design meets all functional, timing, and manufacturing requirements before tape-out.
+Steps:<br>
+* **Design Rule Checking (DRC):** Verify that the layout adheres to the foundry's manufacturing rules.
+* **Layout Versus Schematic (LVS):** Ensure the final layout matches the original gate-level netlist.
+* **Static Timing Analysis (STA):** Confirm that all timing constraints are satisfied and that the circuit will run at the designated frequency.
+
