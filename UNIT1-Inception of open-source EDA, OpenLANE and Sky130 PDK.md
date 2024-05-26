@@ -281,3 +281,52 @@ The design exploration utility is also used for regression testing(CI).
 
 ## <h1 id="header-1_3">(LAB WORK)Get familiar to open-source EDA tools</h1>
 ### <h1 id="header-1_3_1">OpenLANE Directory structure in detail</h1>
+Now we will do lab work so to do this.First we have to create virtual machine in Linux environment.<br>
+OpenLANE leverages the OpenROAD tools and other open-source projects to facilitate the entire design process.
+* The working directory in OpenLANE is where all the files related to a specific ASIC design project are organized and managed.
+* Here we are working on  openlane_working_dir directory.
+* **libs.ref**: Provides references to standard cell libraries and other component libraries needed for digital design stages such as synthesis, placement, and routing.
+* **libs.tech:** Contains technology-specific rules and parameters needed for ensuring that the design adheres to manufacturing process capabilities and limitations.
+  
+  ![SOC1](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/26bde538-b958-41eb-8563-92d1c1d63bf2)
+  
+> * Above snap shows that we are working on the Sky130_fd_sc_hd PDK in the pdks file (Process Design Kit) which is a specific variant of the SkyWater 130nm process technology, tailored for standard cell-based digital design. The "hd" in Sky130_fd_sc_hd stands for "High Density" ,"fd" is a foundry name (skyWater foundry)."sc" means standerd cell library files.
+
+![SOC2](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/c141ff68-c683-4356-925d-c9bceda02bad)
+
+> * Above figure shows the contents of  Sky130_fd_sc_hd
+
+### <h1 id="header-1_3_2">Design Preparation Step</h1>
+![SOC3](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/c987a44d-c626-44d0-9e6b-d8b7b9ed2a0a)
+> * Above figure shows the contents of opelane directory.
+> * Give the following command in openlane
+```
+./flow.tcl -interactive 
+```
+> * The ./flow.tcl -interactive command is used to launch the OpenLANE ASIC design flow in interactive mode.Interactive mode allows you to run the design flow step-by-step, giving you control over each stage of the process. This is particularly useful for debugging, learning, and fine-tuning the design flow according to specific needs.
+This command will start OpenLANE in interactive mode, presenting you with an OpenLANE prompt.
+
+
+Now, If we are go into the design folder in openlane, there are nearly 30-40 designs are already built. Out of them we can open any of the design. for example, here we are opening the picorv32a.v design.
+![SOC4](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/613842e1-e056-43c4-84fb-36a094283f9d)
+
+<b> Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.</b>
+> *The PicoRV32 is a minimalistic RISC-V CPU core, designed by Clifford Wolf. It is particularly suitable for use in FPGAs and ASICs due to its small size and configurability. The "picorv32a" variant refers to an area-optimized version of the PicoRV32 core. Here's an overview of the PicoRV32a design and its contents:
+
+![SOC5](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/c8844d7a-9cb2-490a-9cdd-48b8f0e3a084)
+
+It contains 3 files:-<br>
+* **"src"**- It is where verilog files for our rtl netlist exists.src contains picorv32.v which is the  main Verilog file containing the RTL description of the PicoRV32 CPU core.
+
+* **config.tcl**- Configuration files allow for the customization of the CPU core, enabling or disabling certain features to optimize for area, speed, or power consumption.
+![SOC6](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/05a1a47f-6411-4f78-93e7-b196908c85d2)
+ > The above figure shows the configuration of picorv32,showing design name ,clock period as 5.00,clock port etc.
+
+Now In openlane, we are going to run the synthesis, but before synthesis, we have to include packages and prepare design setup stage. for that command is:-
+```
+% package require openlane 0.9
+% prep -designs picorv32a
+```
+![SOC7](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/77cab21f-c749-45d3-b8d2-8e6075d9ecc2)
+> The preparation is completed.In this lib.ref and lib.tech got merged.
+
