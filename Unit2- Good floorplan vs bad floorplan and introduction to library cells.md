@@ -88,11 +88,24 @@ we are interested in the dimensions of the standard cell so lets take a rough di
  ```
 Utilization Factor = Area occupied by netlist / Total area of the core
 ```
-Now, Let's try to place that particular logic inside the core. The netlist will occupy the whole area inside the core it means it utilizes the core 100%.The leftover area can be used to placed some additional cells like buffers or something else.
+Now, Let's try to place that particular logic inside the core. The netlist will occupy the whole area inside the core it means it utilizes the core 100%.The leftover area can be used to placed some additional cells like buffers, something else or for optimatisation.It can also be used for routing.
 <b>ASPECT RATIO</b>
 ```
 Aspect Ratio = Height /  width
 ```
 If Aspect Ratio is 1 it signifies that chip is square shaped. If it is not 1 it means the chip is in rectangular shape.
 
-### <h2 id="header-2_1_2">Utilization factor and aspect ratio</h2>
+### <h2 id="header-2_1_2"> Concept of pre-placed cells</h2>
+
+>  preplaced cells are specific instances of cells or blocks that are manually positioned in the layout before the automatic placement of standard cells.
+![Screenshot (605)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/78fa8d54-06d1-454d-88b5-5735b3ddede7)
+
+Lets take a combinational logic which does some amount of function and assume its a huge circuit having some N Logic gates so let's divide it into some small numbers of gates. We will cut the whole circuit into two parts, and separate both of them into two blocks and both block will be implemented seperately.
+![Screenshot (605)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/bcda07d6-9b85-4b9e-8aa3-89f50dd0c77d)
+
+Advantage of doing this is we can reuse them multiple times after implimenting once only. Similary there are other IP's also available for eg. Memory, Clock-gating cell, Comporator, MUX  all of these are part of the top level netlist.They recieve some signals and perform functions and deliver the outputs but the functionality of the cell is implemented only once. 
+The arrangement of these IP's in a chip is referd as **floorplanning**.
+These IP's have user-defined locations, and hence are placed in chip before automated placement and routing are called **"pre-placed cells"**. 
+These cells are placed in such a way that, the placement and routing tool do not touch the location of the cell.
+
+### <h2 id="header-2_1_3">De-coupling capacitors</h2>
