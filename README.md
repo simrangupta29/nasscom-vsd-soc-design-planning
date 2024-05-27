@@ -106,7 +106,7 @@ Example: A picorv32 core, which is an RTL implementation of a RISC-V processor.
 * **2.EDA tools:-** EDA tools are software tools used to design and verify electronic systems such as ICs. They include various types of tools for different stages of the design process like Design Entry Tools,simulation tools,synthesis tools.
 * **3.PDK Data:-** PDK (Process Design Kit) is a set of files and documentation provided by a semiconductor foundry that describes the manufacturing process and contains the necessary data to design and fabricate chips using that process.
  It includes design rules, device models, standard cell libraries, IO libraries, and technology files.
-<br>
+
 ![Screenshot (585)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/681c7f48-734e-40dd-9dc7-664db53a65ad)
 
 <b>SkyWater 130nm PDK</b>
