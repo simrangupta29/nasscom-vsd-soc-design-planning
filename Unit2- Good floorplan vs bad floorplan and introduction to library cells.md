@@ -237,13 +237,22 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/5fc71de7-650e-4814-9eba-deefd5d03621)
 
 ### <h2 id="header-2_1_8">Review floorplan layout in Magic</h2>
+To place the layout in center
+* press S for selecting and then "V".
+  ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/7e6aaaa4-d4ee-4577-a91e-6d63b8b7262d)
+
 In the layout we can see that, input output pins are at equal distance.
 
-after selecting (To select object, first click on the object and then press 's' from keyboard. the object will hight lited. to zoom in the object, click on the object and then press 'z' and for zoom out press 'sft+z') one input pin, if we want to check the location or to know at on which layer it is available, we have to open tkcon window and type "what". it will shows all the details about that perticular pin.
+after selecting (To select object, first click on the object and then press 's' from keyboard. the object will hightlited. to zoom in the object, click on the object and then press 'z' and for zoom out press 'sft+z') one input pin, if we want to check the location or to know at on which layer it is available, we have to open tkcon window and type "what". it will shows all the details about that perticular pin.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/eb60644a-3e04-40a5-ada7-f272ffc3dfb6)
+It shows that selected subcell is in the topmost section of picorv32a.
 
-so, it show that the pin is in the metal 3.similarly doing for the vertical pins, we find that this pin is at metal 2.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/51ea395e-95d5-495d-bee5-e66daca72a38)
 
-Along with the side rows,the Decap cells are arranged at the border of the side rows.
+> The pin at the end  is in the metal 3.similarly doing for the vertical pins, we find that this pin is at metal 2.
 
-here we can see that first standerd cells is for buffer 1. similarly other cells are for buffer 2, AND gate etc.
+Along with the side rows,the Decap cells are arranged at the border of the side rows.<br>
+here we can see that first standerd cells is for buffer 1. similarly other cells are for buffer 2, AND gate etc.<br>
+* At the lower end standard cells are present.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4277ecd5-07ea-4909-a590-5827a1356a97)
 
