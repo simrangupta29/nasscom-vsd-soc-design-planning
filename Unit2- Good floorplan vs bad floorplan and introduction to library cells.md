@@ -229,6 +229,7 @@ Area = 443,587.212425  square micronmeter.
 ```
 To see the actual layout after the flow, we have to open the magic tech file by adding the command
 ```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
 ```
  Magic file will open. <br>
  Now we can see the layout.
