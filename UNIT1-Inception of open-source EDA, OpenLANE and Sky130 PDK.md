@@ -305,6 +305,7 @@ OpenLANE leverages the OpenROAD tools and other open-source projects to facilita
 ```
 > * The ./flow.tcl -interactive command is used to launch the OpenLANE ASIC design flow in interactive mode.Interactive mode allows you to run the design flow step-by-step, giving you control over each stage of the process. This is particularly useful for debugging, learning, and fine-tuning the design flow according to specific needs.
 This command will start OpenLANE in interactive mode, presenting you with an OpenLANE prompt.
+![soc21](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/3d41cd33-980d-415b-99f7-1f96af0c12dc)
 
 
 Now, If we are go into the design folder in openlane, there are nearly 30-40 designs are already built. Out of them we can open any of the design. for example, here we are opening the picorv32a.v design.
