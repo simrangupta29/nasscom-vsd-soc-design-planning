@@ -180,4 +180,21 @@ Pins need to be placed strategically:
 * This blockage ensures that the signal paths for critical connections, like clock signals, remain unobstructed and efficient.
   ![Screenshot (618)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4fb2b2eb-8cb8-4fca-9344-59b388e925b3)
 ### <h2 id="header-2_1_6">Steps to run floorplan using OpenLANE</h2>
-Before run the floorplanning, we required some switches for the floorplanning. these we can get from the configuration from openlane.
+Before run the floorplanning, we require some switches for the floorplanning. these we can get from the configuration from openlane.
+* In order to do that we open README file of configuration folder,we will see the variables which are required at each step.
+  by entering
+  ```
+  less README.md
+  ```
+  ![soc22](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/fbc6e285-096f-42f1-8b39-f4bf624ebb94)
+
+* We can also see the synthesis ,library files,global variables,constraints set.These variables are switches
+* We have FP_CORE_UTL set as 0.5 and FP_ASPECT_RATIO set as 1 by default,similiarly we have defined margined value,vertcal,horizontal etc.
+  ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/0bdb634b-8a9d-4976-8858-029c50fb5b69)
+  Now we will see where are these switches set so if we will do
+```
+less floorplan.tcl
+```
+we can see the switches set in the floorplan.tcl.
+* Here FP_IO_MODE says how we want our pin configuration to be around.
+  ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/d0c3a636-5ad8-43e4-ba08-d9d49951b759)
