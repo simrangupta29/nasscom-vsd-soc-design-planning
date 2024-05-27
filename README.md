@@ -442,4 +442,82 @@ Pins need to be placed strategically:
 * This blockage ensures that the signal paths for critical connections, like clock signals, remain unobstructed and efficient.
   ![Screenshot (618)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4fb2b2eb-8cb8-4fca-9344-59b388e925b3)
 
+### <h2 id="header-2_1_6">Steps to run floorplan using OpenLANE</h2>
+Before run the floorplanning, we require some switches for the floorplanning. these we can get from the configuration from openlane.
+* In order to do that we open README file of configuration folder,we will see the variables which are required at each step.
+  by entering
+  ```
+  less README.md
+  ```
+  ![soc22](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/fbc6e285-096f-42f1-8b39-f4bf624ebb94)
+
+* We can also see the synthesis ,library files,global variables,constraints set.These variables are switches
+* We have FP_CORE_UTL set as 0.5 and FP_ASPECT_RATIO set as 1 by default,similiarly we have defined margined value,vertcal,horizontal etc.
+  ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/0bdb634b-8a9d-4976-8858-029c50fb5b69)
+  Now we will see where are these switches set so if we will do
+```
+less floorplan.tcl
+```
+we can see the switches set in the floorplan.tcl.
+* Here FP_IO_MODE says how we want our pin configuration to be around.0 means pin positioning is random but it is on equal distance.
+  ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/d0c3a636-5ad8-43e4-ba08-d9d49951b759)
+In the OpenLANE lower priority is given to system default (floorplanning.tcl), the next priority is given to config.tcl and then priority is given to PDK varient.tcl (sky130A_sky130_fd_sc_hd_congig.tcl).<br>
+
+Now we see, with this settings how floorplan run.<br>
+Give the following command
+```
+run_flooplan
+```
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/3969cf04-3fc8-4fe4-923f-a7f04dd2f6ca)
+
+### <h2 id="header-2_1_7">Review floorplan files and steps to view floorplan</h2>
+In the run folder, we can see the config.tcl file. this file contains all the configuration that are taken by the flow. if we open the config.tcl file, then we can see that which are the parameters are accepted in the current flow.
+The runs folder will contain the latest folder by today's date so let's open config.tcl of runs 
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/8d7771cb-f27a-4b7d-9305-bfb2841ce222)
+> The latest runs config.tcl shows utilisation factor as 35 whereas in sky130A_sky130_fd_sc_hd_config.tcl of picorv32a we have utitisation factor as 35. so latest uf is overwritten by confif.tcl ,which is then overwritten by sky130A_sky130_fd_sc_hd_config.tcl.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/d8a11c03-63ae-432d-8936-03001e395d20)
+
+To watch how floorplane looks, we have to go in the results. in the result, one def( design exchange formate) file is available.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/e7c59925-10ff-43f3-9637-0364d9e64ed1)
+if we open this file, we can see all information about die area (0 0) (660685 671405), unit distance in micron (1000). 
+* It means 1 micron means 1000 databased units. so 660685 and 671405 are databased units. and if we divide this by 1000 then we can get the dimensions of chips in micrometer.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/8209085a-1cd9-4f8b-977c-393ff704c9b4)
+
+So, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
+#### TASK2
+```
+Area of the chip = width*height
+Area = 660.685*671.405 square micronmeter.
+Area = 443,587.212425  square micronmeter.
+```
+To see the actual layout after the flow, we have to open the magic tech file by adding the command
+```
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def
+```
+ Magic file will open. <br>
+ Now we can see the layout.
+ 
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/5fc71de7-650e-4814-9eba-deefd5d03621)
+
+### <h2 id="header-2_1_8">Review floorplan layout in Magic</h2>
+To place the layout in center
+* press S for selecting and then "V".
+  ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/7e6aaaa4-d4ee-4577-a91e-6d63b8b7262d)
+
+In the layout we can see that, input output pins are at equal distance.
+
+after selecting (To select object, first click on the object and then press 's' from keyboard. the object will hightlited. to zoom in the object, click on the object and then press 'z' and for zoom out press 'sft+z') one input pin, if we want to check the location or to know at on which layer it is available, we have to open tkcon window and type "what". it will shows all the details about that perticular pin.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/eb60644a-3e04-40a5-ada7-f272ffc3dfb6)
+It shows that selected subcell is in the topmost section of picorv32a.
+
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/51ea395e-95d5-495d-bee5-e66daca72a38)
+
+> The pin at the end  is in the metal 3.similarly doing for the vertical pins, we find that this pin is at metal 2.
+
+Along with the side rows,the Decap cells are arranged at the border of the side rows.<br>
+here we can see that first standerd cells is for buffer 1. similarly other cells are for buffer 2, AND gate etc.<br>
+* At the lower end standard cells are present.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4277ecd5-07ea-4909-a590-5827a1356a97)
+
+
 
