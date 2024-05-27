@@ -207,8 +207,8 @@ run_flooplan
 ```
 
 ### <h2 id="header-2_1_7">Review floorplan files and steps to view floorplan</h2>
-In the run folder, we can see the connfig.tcl file. this file contains all the configuration that are taken by the flow. if we open the config.tcl file, then we can see that which are the parameters are accepted in the current flow.
-
+In the run folder, we can see the config.tcl file. this file contains all the configuration that are taken by the flow. if we open the config.tcl file, then we can see that which are the parameters are accepted in the current flow.
+The runs folder will contain the latest folder by today's date
 To watch how floorplane looks, we have to go in the results. in the result, one def( design exchange formate) file is available. if we open this file, we can see all information about die area (0 0) (660685 671405), unit distance in micron (1000). it means 1 micron means 1000 databased units. so 660685 and 671405 are databased units. and if we devide this by 1000 then we can get the dimensions of chips in micrometer.
 
 so, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
