@@ -421,7 +421,7 @@ In chip design, pin placement and logical cell placement blockage are critical s
 This design has:
 * 4 input ports: Din1, Din2, clk1, clk2
 * 3 output ports: Dout1, Dout2, clkOut
-Additionally, a more complex design with 6 input ports and 5 output ports is mentioned, demonstrating the need for careful pin placement and connectivity.
+Additionally, a more complex design with 6 input ports and 5 output ports is mentioned, demonstrating the need for careful pin placement and connectivity.<br>
 <b>Netlist and Core Integration</b>
 > The connectivity information between the gates is coded in VHDL/Verilog, forming the netlist. This netlist is then placed within the core of the chip design. The area between the core and the die (the chip’s boundary) needs to be filled with pin information.
 ![Screenshot (616)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/ae96c131-4901-4af5-b047-50636823da1a)
