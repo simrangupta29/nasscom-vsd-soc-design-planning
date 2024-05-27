@@ -179,3 +179,5 @@ Pins need to be placed strategically:
 * The area around pin placements is blocked to ensure that routing and cell placement do not interfere with the signal paths.
 * This blockage ensures that the signal paths for critical connections, like clock signals, remain unobstructed and efficient.
   ![Screenshot (618)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4fb2b2eb-8cb8-4fca-9344-59b388e925b3)
+### <h2 id="header-2_1_6">Steps to run floorplan using OpenLANE</h2>
+Before run the floorplanning, we required some switches for the floorplanning. these we can get from the configuration from openlane.
