@@ -306,7 +306,7 @@ The above figure shows the successfull synthesis.
   
 > Above figure the shows the synthesis of chip and its area too.
 
-#### Calculation of the flop ratio.
+#### (Task-1) Calculation of the flop ratio.
 .
 ```math
 Flop\ Ratio = \frac{Number\ of\ D\ Flip\ Flops}{Total\ Number\ of\ Cells}
