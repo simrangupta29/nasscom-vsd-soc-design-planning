@@ -227,10 +227,13 @@ Area of the chip = width*height
 Area = 660.685*671.405 square micronmeter.
 Area = 443,587.212425  square micronmeter.
 ```
-To see the actual layout after the flow, we have to open the magic file by adding the command
+To see the actual layout after the flow, we have to open the magic tech file by adding the command
 ```
 ```
- Magic file will open. here we can see the layout.
+ Magic file will open. <br>
+ Now we can see the layout.
+ 
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/5fc71de7-650e-4814-9eba-deefd5d03621)
 
 ### <h2 id="header-2_1_8">Review floorplan layout in Magic</h2>
 In the layout we can see that, input output pins are at equal distance.
