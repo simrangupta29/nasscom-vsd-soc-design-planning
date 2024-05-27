@@ -150,4 +150,32 @@ So the final power planning with the mesh solution would look like:-
 ![Screenshot (613)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/00ab18bf-4bbf-4e24-b488-d7f3bc38517d)
 
 ### <h2 id="header-2_1_5">Pin placement and logical cell placement blockage</h2>
-**Pin Placement**
+In chip design, pin placement and logical cell placement blockage are critical steps in the floor planning process.
+<b>Example Design Overview</b>
+
+> Consider a design with two circuits driven by different clocks, clk1 and clk2, with inputs Din1 and Din2 and outputs Dout1 and Dout2. There are also preplaced cells, BlockA and BlockB.
+* BlockA receives inputs from Din1 and Din2.
+* BlockB receives inputs from clk1 and clk2 and provides a clock output (clkOut).
+This design has:
+* 4 input ports: Din1, Din2, clk1, clk2
+* 3 output ports: Dout1, Dout2, clkOut
+Additionally, a more complex design with 6 input ports and 5 output ports is mentioned, demonstrating the need for careful pin placement and connectivity.
+<b>Netlist and Core Integration</b>
+> The connectivity information between the gates is coded in VHDL/Verilog, forming the netlist. This netlist is then placed within the core of the chip design. The area between the core and the die (the chip’s boundary) needs to be filled with pin information.
+![Screenshot (616)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/ae96c131-4901-4af5-b047-50636823da1a)
+
+<b>Pin Placement</b>
+Pin placement is a collaborative effort:
+* The frontend team designs the netlist and determines the connectivity of inputs and outputs.
+* The backend team handles the physical pin placements on the chip.
+Pins need to be placed strategically:
+* Preplaced blocks (BlockA and BlockB) should be located near their respective input pins (Din1, Din2, clk1, clk2) for efficient signal routing.
+* Clock pins (clk1, clk2, clkOut) are larger than other pins because they need to provide continuous signals with minimal resistance. Larger pins reduce resistance, ensuring faster and more reliable signal transmission.
+  ![Screenshot (617)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/5b77c186-a8dc-49d5-b928-40764769d56b)
+
+<b>Logical Cell Placement Blockage</b>
+> When placing pins, it’s essential to block certain areas to prevent routing and cell placements in these regions. This is known as logical cell placement blockage:
+
+* The area around pin placements is blocked to ensure that routing and cell placement do not interfere with the signal paths.
+* This blockage ensures that the signal paths for critical connections, like clock signals, remain unobstructed and efficient.
+  ![Screenshot (618)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4fb2b2eb-8cb8-4fca-9344-59b388e925b3)
