@@ -205,15 +205,32 @@ Give the following command
 ```
 run_flooplan
 ```
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/3969cf04-3fc8-4fe4-923f-a7f04dd2f6ca)
 
 ### <h2 id="header-2_1_7">Review floorplan files and steps to view floorplan</h2>
 In the run folder, we can see the config.tcl file. this file contains all the configuration that are taken by the flow. if we open the config.tcl file, then we can see that which are the parameters are accepted in the current flow.
-The runs folder will contain the latest folder by today's date
-To watch how floorplane looks, we have to go in the results. in the result, one def( design exchange formate) file is available. if we open this file, we can see all information about die area (0 0) (660685 671405), unit distance in micron (1000). it means 1 micron means 1000 databased units. so 660685 and 671405 are databased units. and if we devide this by 1000 then we can get the dimensions of chips in micrometer.
+The runs folder will contain the latest folder by today's date so let's open config.tcl of runs 
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/8d7771cb-f27a-4b7d-9305-bfb2841ce222)
+> The latest runs config.tcl shows utilisation factor as 35 whereas in sky130A_sky130_fd_sc_hd_config.tcl of picorv32a we have utitisation factor as 35. so latest uf is overwritten by confif.tcl ,which is then overwritten by sky130A_sky130_fd_sc_hd_config.tcl.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/d8a11c03-63ae-432d-8936-03001e395d20)
 
-so, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
-To see the actual layout after the flow, we have to open the magic file by adding the command ```magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def```
-And then after pressing the enter, Magic file will open. here we can see the layout.
+To watch how floorplane looks, we have to go in the results. in the result, one def( design exchange formate) file is available.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/e7c59925-10ff-43f3-9637-0364d9e64ed1)
+if we open this file, we can see all information about die area (0 0) (660685 671405), unit distance in micron (1000). 
+* It means 1 micron means 1000 databased units. so 660685 and 671405 are databased units. and if we divide this by 1000 then we can get the dimensions of chips in micrometer.
+![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/8209085a-1cd9-4f8b-977c-393ff704c9b4)
+
+So, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
+#### TASK2
+```
+Area of the chip = width*height
+Area = 660.685*671.405 square micronmeter.
+Area = 443,587.212425  square micronmeter.
+```
+To see the actual layout after the flow, we have to open the magic file by adding the command
+```
+```
+ Magic file will open. here we can see the layout.
 
 ### <h2 id="header-2_1_8">Review floorplan layout in Magic</h2>
 In the layout we can see that, input output pins are at equal distance.
