@@ -196,5 +196,33 @@ Before run the floorplanning, we require some switches for the floorplanning. th
 less floorplan.tcl
 ```
 we can see the switches set in the floorplan.tcl.
-* Here FP_IO_MODE says how we want our pin configuration to be around.
+* Here FP_IO_MODE says how we want our pin configuration to be around.0 means pin positioning is random but it is on equal distance.
   ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/d0c3a636-5ad8-43e4-ba08-d9d49951b759)
+In the OpenLANE lower priority is given to system default (floorplanning.tcl), the next priority is given to config.tcl and then priority is given to PDK varient.tcl (sky130A_sky130_fd_sc_hd_congig.tcl).<br>
+
+Now we see, with this settings how floorplan run.<br>
+Give the following command
+```
+run_flooplan
+```
+
+### <h2 id="header-2_1_7">Review floorplan files and steps to view floorplan</h2>
+In the run folder, we can see the connfig.tcl file. this file contains all the configuration that are taken by the flow. if we open the config.tcl file, then we can see that which are the parameters are accepted in the current flow.
+
+To watch how floorplane looks, we have to go in the results. in the result, one def( design exchange formate) file is available. if we open this file, we can see all information about die area (0 0) (660685 671405), unit distance in micron (1000). it means 1 micron means 1000 databased units. so 660685 and 671405 are databased units. and if we devide this by 1000 then we can get the dimensions of chips in micrometer.
+
+so, the width of chip is 660.685 micrometer and height of the chip is 671.405 micrometer.
+To see the actual layout after the flow, we have to open the magic file by adding the command ```magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def```
+And then after pressing the enter, Magic file will open. here we can see the layout.
+
+### <h2 id="header-2_1_8">Review floorplan layout in Magic</h2>
+In the layout we can see that, input output pins are at equal distance.
+
+after selecting (To select object, first click on the object and then press 's' from keyboard. the object will hight lited. to zoom in the object, click on the object and then press 'z' and for zoom out press 'sft+z') one input pin, if we want to check the location or to know at on which layer it is available, we have to open tkcon window and type "what". it will shows all the details about that perticular pin.
+
+so, it show that the pin is in the metal 3.similarly doing for the vertical pins, we find that this pin is at metal 2.
+
+Along with the side rows,the Decap cells are arranged at the border of the side rows.
+
+here we can see that first standerd cells is for buffer 1. similarly other cells are for buffer 2, AND gate etc.
+
