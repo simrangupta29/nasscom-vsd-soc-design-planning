@@ -110,6 +110,7 @@ We can implement it once only but can use it multiple times. Similary there are 
 
 ### <h2 id="header-2_1_3">De-coupling capacitors</h2>
 > Decoupling capacitors (decaps) play a critical role in ensuring stable and reliable operation of the integrated circuit. They are strategically placed around preplaced cells and throughout the chip to mitigate the effects of noise and voltage fluctuations.
+
 <b>Function of Decoupling Capacitors</b>
 * **1.Stabilizing Voltage Supply**
 * When a gate, such as an AND gate, switches from 0 to 1 or 1 to 0, it requires a certain amount of switching current due to the capacitance associated with it. This capacitance must be fully charged to represent a logic '1' and completely discharged to represent a logic '0'.
