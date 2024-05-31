@@ -256,3 +256,106 @@ here we can see that first standerd cells is for buffer 1. similarly other cells
 * At the lower end standard cells are present.
 ![image](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4277ecd5-07ea-4909-a590-5827a1356a97)
 
+## <h2 id="header-2_2">Library building and Placement</h2>
+### <h2 id="header-2_2_1">Netlist binding and initial place design</h2>
+
+![Screenshot (620)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/0b683bb3-52a8-4519-bde3-5c4cac8155da)
+
+<b> Netlist and Gate Shapes:</b><br>
+
+* A netlist contains the logic gates and their connections. Each gate, such as a NOT gate or an AND gate, has a specific shape representing its functionality.
+* In practice, these gates are not just symbolic shapes but have physical dimensions—width and height. For example:
+A NOT gate may be symbolically a triangle, but in reality, it's a rectangular box.
+* Similarly, AND gates and flip-flops are also represented as rectangular boxes.
+* Each component in the netlist is assigned a physical shape with specific dimensions. This transformation from symbolic shapes to physical dimensions is necessary for real-world implementation.
+
+![Screenshot (621)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/e8d083dd-61b8-4bda-b7f5-22ff0508e2ac)
+
+<b>Library Concept:</b><br>
+* A library is like a repository where all types of gates and flip-flops (represented as books) are stored.
+* This library includes not only the shapes and sizes of these components but also their timing information, such as gate delays.
+* Libraries can be divided into sub-libraries:
+* One sub-library for physical dimensions (shapes and sizes).
+* Another sub-library for timing information (delays and performance characteristics).
+* Different flavors of each cell might exist, allowing choices based on size and timing requirements. Larger cells have lower resistance and delay but occupy more space.
+
+  ![Screenshot (622)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/5d211fac-cdd7-4532-a8a9-4b758a5e876d)
+
+#### Placement
+<b>Floorplan Setup:</b><br>
+* Once shapes and sizes are assigned to all gates, the next step is to place these physical shapes onto the chip's floorplan.
+* The floorplan includes the positions of input and output ports and the preplaced cells (previously determined blocks that should not be moved).
+  
+<b>Placing Components:</b><br>
+* With the netlist, physical dimensions, and floorplan in hand, the next task is to place the gates according to their logical connections.
+* The placement process ensures that preplaced cells remain in their designated locations and no new cells overlap these areas.
+* The goal is to maintain logical connectivity while minimizing the distance between connected components to reduce delay.
+
+### <h2 id="header-2_2_2">Optimize placement using estimated wire-length and capacitance</h2>
+
+#### Optimize Placement
+* **1.Problem of Distance:**
+* In chip design, components (like flip-flops, FF1) need to be placed close to their inputs (like Din2) to minimize delays. If the distance between these components is too large, it creates significant issues due to increased wire length and capacitance.
+  
+* **2.Estimating Capacitance and Resistance:**
+* Before the actual routing of wires, we can estimate the capacitance and resistance based on the wire length. Longer wires have higher capacitance and resistance, making it difficult for signals to travel efficiently.
+
+![Screenshot (623)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/3efbe642-43cb-408c-906e-14e717b13019)
+
+* **3.Impact on Signal Integrity:**
+* If the signal has to travel a long distance from Din2 to FF1, it might degrade and become difficult for FF1 to process. This degradation happens because the signal loses strength over long distances due to high capacitance and resistance.
+  
+* **4.Using Repeaters:**
+* To maintain signal integrity, repeaters (buffers) are used.
+* Repeaters refresh the signal, restoring it to its original strength and sending it forward. This process repeats until the signal reaches its destination.
+* The use of repeaters ensures that the signal maintains its integrity throughout its journey from the input to the desired component.
+  
+* **5.Placement of Repeaters:**
+* Repeaters are strategically placed along the path from Din2 to FF1. These intermediate steps ensure that the signal is successfully driven to FF1 without degradation.
+* While repeaters solve the problem of signal integrity, they do consume additional area on the chip. Hence, their use needs to be balanced with available space on the floorplan.
+ 
+* **6.Stages of Placement:**
+* Stage 1: If the components are close enough, there may be no need for repeaters, as the signal can travel directly without significant degradation.
+* Stage 2: For longer distances, repeaters are essential to ensure the signal reaches its destination without losing strength. This is particularly important for maintaining performance in high-speed circuits.
+
+### <h2 id="header-2_2_3">Final placement optimization</h2>
+
+<b>Stage 3&4  Optimization:</b><br>
+* Similar to stage 2, stage 3 also necessitates the use of a buffer. For instance, placing a buffer between gate2 and FF2 ensures that the signal does not degrade due to the long distance between these components.
+* Stage 4 is more complex compared to stages 2 and 3. It involves a careful analysis to ensure the correctness of our optimizations. This is achieved through timing analysis.
+
+![Screenshot (625)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/e4a32374-6acc-46e5-80b9-771e54d99220)
+
+* **Timing Analysis:**
+* Timing analysis involves evaluating the design with ideal clocks to check if the placement of components and the use of repeaters are correct.
+* By analyzing the timing data, we can determine whether the signals reach their destinations within the required time constraints. This helps in verifying the overall correctness of the placement and ensures that the design meets the necessary performance criteria.
+
+### <h2 id="header-2_2_4">Need for libraries and characterization</h2>
+
+> Every IC design flow stage relies heavily on libraries and characterization. Libraries offer the building blocks for the design, while characterization ensures that these blocks perform correctly and efficiently. Together, they enable designers to create reliable and high-performance integrated circuits.
+
+<b>Libraries:</b><br>
+* Contain standard cells (gates, flip-flops, buffers, etc.) with defined physical and electrical properties.
+* Provide the necessary information for logic synthesis, placement, CTS, and routing.
+* Include multiple versions of each cell, optimized for different performance and area requirements
+
+![Screenshot (626)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/cbc73691-3d05-4cd0-9a7b-4fdf57f7fd30)
+
+<b>Need of libraries in various steps:-</b><br>
+
+![Screenshot (629)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/9fc239f0-25f3-47ac-adc0-31e77b43d2d8)
+
+* **1.Need for Libraries in logic synthesis**: Libraries provide the standard cells (gates and flip-flops) used in logic synthesis. Each cell in the library has defined electrical characteristics and physical dimensions.
+* **2.Need for Libraries in floor planning:** Libraries help determine the physical dimensions and placement constraints of each cell, which are essential for effective floorplanning.
+* **3.Need for Libraries in placement:** Libraries provide the physical dimensions and placement rules for each cell, ensuring that they are placed correctly to meet timing requirements.
+* **4.Need for Libraries in CTS:** Libraries include detailed timing information for clock buffers and other cells, which is crucial for designing an effective clock tree.
+* **5.Need for Characterization in Routing:** Characterization data for each cell, such as delay, capacitance, and resistance, helps in accurate routing and ensures signal integrity.
+
+  ![Screenshot (630)](https://github.com/simrangupta29/nasscom-vsd-soc-design-planning/assets/130252328/4596083e-43f1-4930-b6fc-40a4e784f20b)
+
+* **6.Need for Characterization:** Characterization provides the timing parameters for each cell, which are essential for accurate timing analysis.
+
+  ### <h2 id="header-2_2_5">Congestion aware placement using RePlAce</h2>
+Currently, our primary concern is not timing, but congestion. We aim to minimize congestion during placement.
+> Placement occurs in two stages: global and detailed. In global placement, legalization does not take place; it happens after detailed placement.When we run the placement, global placement happens first.
+
