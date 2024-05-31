@@ -1,0 +1,34 @@
+we can make changes in floorplan like rightnow our input output pin is equidistant.
+we can do this by opening current def file of runs folder to see the layout after placement.
+Now open openlane configurations and open floorplan.tcl to view the IO Mode which is set at 1.i.e-equidistant.
+now in openlane tab-give command-%set::env(FP_IO_MODE) 2
+give command run_floorplan
+
+
+
+we will git clone a repository as that git already contains doc.md file of inverter and pmos ,nmos,sky130 where nshort.lib,pshort.lib are sky130 files for that:-
+to clone the git repo .....
+after getting cloned 
+open vsdstcelldesign folder from openlane
+ Clone custom inverter standard cell design from github repository
+# Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+# Clone the repository with custom inverter design
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+# Change into repository directory
+cd vsdstdcelldesign
+
+# Copy magic tech file to the repo directory for easy access
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+# Check contents whether everything is present
+ls
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+image1
+
+To see the layers used in the building of inverter
+image2
