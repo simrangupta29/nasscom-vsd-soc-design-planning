@@ -32,3 +32,18 @@ image1
 
 To see the layers used in the building of inverter
 image2
+
+IT have cmos,nmos and the red line is the polysilicon,the source of pmos in connected to vdd and nmos to ground
+ih the skywater pdk first layer is interconnct that is short, we can get the layer from the colour pellet in right 
+we can green colour as ndiffusion and brown as pdiffusion
+if we place our cursor and select the intersection of nmos and polysilicon region (green) and write %what in tckon.tcl we will know that it is nmos.
+
+image3
+similiarly for pmos 
+image 
+now to see if drain of nmos and pmos are connected or not press s three times on Y region
+image
+source of nmos need to be connected to gnd and pmos to vdd(check)
+image
+write about lef from given git diff
+ git:-llx-lower left x value,lly to define the rectangle
